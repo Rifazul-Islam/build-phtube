@@ -33,13 +33,25 @@ const handlerIdLoad= async(categoryId) =>{
 const handlerCategoryCard = (categories) =>{
   const cardContainer = document.getElementById('card-container');
   cardContainer.innerHTML = '';
+ 
+  // Error Message Not found
+  const errorMessage = document.getElementById('error-message')
+
+  if(categories.length === 0){
+     errorMessage.classList.remove('hidden')
+  }else{
+       errorMessage.classList.add('hidden')
+  }
+
+  
+
    categories.forEach(category =>{
    const cardDiv = document.createElement('div')
    cardDiv.classList = `card card-compact bg-base-300 shadow-xl p-2`
    cardDiv.innerHTML = `
          <figure><img class="h-40 w-full" src="${category?.thumbnail}" alt="Shoes" /></figure>
          <div class="card-body">
-         <h2 class="card-title">Shoes!</h2>
+         <h2 class="card-title"> ${category?.title}</h2>
          <p>If a dog chews shoes whose shoes does he choose?</p>
         <div class="card-actions justify-end">
        <button class="btn btn-primary">Buy Now</button>
