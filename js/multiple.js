@@ -23,12 +23,16 @@ const displayShowName = (categories) =>{
 }
 
 // handler categoryId 
-const handlerIdLoad= async(categoryId) =>{
+const handlerIdLoad= async(categoryId="1000") =>{
    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
    const data = await res.json()
    const categories = data.data;
    handlerCategoryCard(categories)
 }
+
+//default id call 
+handlerIdLoad()
+
 
 const handlerCategoryCard = (categories) =>{
   const cardContainer = document.getElementById('card-container');
@@ -43,7 +47,7 @@ const handlerCategoryCard = (categories) =>{
        errorMessage.classList.add('hidden')
   }
 
-  
+
 
    categories.forEach(category =>{
    const cardDiv = document.createElement('div')
