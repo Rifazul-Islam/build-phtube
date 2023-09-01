@@ -55,11 +55,27 @@ const handlerCategoryCard = (categories) =>{
    cardDiv.innerHTML = `
          <figure><img class="h-40 w-full" src="${category?.thumbnail}" alt="Shoes" /></figure>
          <div class="card-body">
-         <h2 class="card-title"> ${category?.title}</h2>
-         <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div class="card-actions justify-end">
-       <button class="btn btn-primary">Buy Now</button>
-     </div>
+          <div class="flex items-center">
+
+     
+
+        <div class="avatar">
+           <div class="w-12 rounded-full  ring-offset-base-100 ring-offset-2">
+           <img src="${category?.authors[0]?.profile_picture}" />
+          </div>
+       </div>
+
+          <div><h2 class="card-title ml-2"> ${category?.title}</h2> </div>
+          
+          </div>
+
+          <div class="flex justify-center items-center">
+          
+         <div><p class="font-semibold  text-slate-500"> ${category?.authors[0]?.profile_name} </p></div>
+         <div class="ml-3 ">${category?.authors[0]?.verified ? `<p><i class="fa-solid fa-circle-check  text-[#2568EF] text-2xl"></i></p>`:' '}  </div>
+         </div>
+
+       <p class="text-center"> ${category?.others?.views} views </p>
    </div>   
    
    `
