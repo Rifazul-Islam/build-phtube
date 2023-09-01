@@ -21,31 +21,27 @@ const displayShowName = (categories) =>{
   })
 
 }
-
+let isClicked
 // handler categoryId 
 const handlerIdLoad= async(categoryId="1000") =>{
    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
    const data = await res.json()
    const categories = data.data;
+    
    handlerCategoryCard(categories)
-   handlerSort(categories)
+ 
+
 }
 
 //default id call 
 handlerIdLoad()
-
-
-// Sort system 
-const handlerSort = (categories) =>{
- 
-
-   // sortingCategory = categories.sort(function(a, b){return b.others?.views.slice(0,3) - a.others?.views.slice(0,3)});
-//   if(!true){
-//      console.log('hello');
-//   }else{
-//     console.log('none');
-//   }
-}
+// const handlerSort = (categories) =>{ 
+//    console.log(categories);  
+//  categories = categories?.sort(function(a, b){return b.others?.views.slice(0,3) - a.others?.views.slice(0,3)});
+//  console.log(categories);
+//  handlerCategoryCard(categories)
+    
+// }
 
 
 const handlerCategoryCard = (categories) =>{
@@ -77,8 +73,9 @@ const handlerCategoryCard = (categories) =>{
             const hours = houred / 60 ;
             const currentHours = Math.floor(hours)
             
-            const minute = numberConvert % 60 ;
-           return ` ${currentHours} Hrs   ${minute} minute ago `
+            const minute = Math.floor(hour % 60) ;
+
+           return ` ${currentHours} hrs   ${minute} minute ago `
          }
       }
     
@@ -133,14 +130,6 @@ loadCategoryName()
 
 
 
- const handlerSor = () =>{
-   if(!clicked){
-      //some code here
-          console.log("working");
-      }else{
-         'non work'
-      }
 
- }
 
 
