@@ -95,7 +95,7 @@ const handlerCategoryCard = (categories) =>{
          </figure>
          
          <div class="card-body">
-          <div class="flex items-center">
+          <div class="flex items-center sm:justify-center">
         <div class="avatar">
            <div class="w-12 rounded-full  ring-offset-base-100 ring-offset-2">
            <img src="${category?.authors[0]?.profile_picture}" />
