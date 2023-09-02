@@ -95,7 +95,7 @@ const handlerCategoryCard = (categories) =>{
          </figure>
          
          <div class="card-body">
-          <div class="flex items-center sm:justify-center">
+          <div class="flex items-center justify-center">
         <div class="avatar">
            <div class="w-12 rounded-full  ring-offset-base-100 ring-offset-2">
            <img src="${category?.authors[0]?.profile_picture}" />
@@ -109,7 +109,7 @@ const handlerCategoryCard = (categories) =>{
           <div class="flex justify-center items-center">
           
          <div><p class="font-semibold  text-slate-500"> ${category?.authors[0]?.profile_name} </p></div>
-         <div class="ml-3 ">${category?.authors[0]?.verified ? `<p><i class="fa-solid fa-circle-check  text-[#2568EF] text-2xl"></i></p>`:' '}  </div>
+         <div class="ml-3">${category?.authors[0]?.verified ? `<p><i class="fa-solid fa-circle-check  text-[#2568EF] text-2xl"></i></p>`:' '}  </div>
          </div>
 
        <p class="text-center"> ${category?.others?.views} views </p>
