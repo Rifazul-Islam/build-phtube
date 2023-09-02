@@ -14,34 +14,35 @@ const displayShowName = (categories) =>{
   const tabDiv = document.createElement('div')
    tabDiv.classList = `ml-4`
   tabDiv.innerHTML = `
-   <a onclick="handlerIdLoad('${category?.category_id}')" class="tab btn-ghost normal-case bg-slate-200 rounded"> ${category?.category} </a> 
-  `
+   <a onclick="handlerIdLoad('${category?.category_id}')" class="tab btn-ghost normal-case bg-slate-200 rounded" > ${category?.category} </a> 
+   
+   `
   tabContainer.appendChild(tabDiv)
 
   })
 
 }
-let isClicked
+
+let sortingItems;
+
 // handler categoryId 
 const handlerIdLoad= async(categoryId="1000") =>{
    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
    const data = await res.json()
-   const categories = data.data;
-    
-   handlerCategoryCard(categories)
- 
+    let categories = data.data;
+   
+    handlerCategoryCard(categories)
 
+    const stortingSystem = document.getElementById('sortingId');
+    stortingSystem.addEventListener('click', ()=>{
+      let otherSorting =[...categories]
+      otherSorting = otherSorting?.sort(function(a, b){return b.others?.views?.slice(0,3) - a.others?.views?.slice(0,3)});
+      handlerCategoryCard(otherSorting)
+    })
 }
 
 //default id call 
 handlerIdLoad()
-// const handlerSort = (categories) =>{ 
-//    console.log(categories);  
-//  categories = categories?.sort(function(a, b){return b.others?.views.slice(0,3) - a.others?.views.slice(0,3)});
-//  console.log(categories);
-//  handlerCategoryCard(categories)
-    
-// }
 
 
 const handlerCategoryCard = (categories) =>{
@@ -67,16 +68,13 @@ const handlerCategoryCard = (categories) =>{
 // convert Hours and Minute
    const  convertHoursMinute = (numberConvert) =>{
       if(!isNaN(numberConvert)){
-         if(numberConvert % 60 !== 0){
             const hour = numberConvert / 60 ;
             const houred = Math.floor(hour);
             const hours = houred / 60 ;
             const currentHours = Math.floor(hours)
-            
             const minute = Math.floor(hour % 60) ;
-
            return ` ${currentHours} hrs   ${minute} minute ago `
-         }
+         
       }
     
    }
